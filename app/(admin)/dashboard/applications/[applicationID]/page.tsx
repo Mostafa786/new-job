@@ -9,7 +9,7 @@ export default async function ApplicationDetails({params}:ApplicationDetailsType
         return(
         <div>
             <h1>Application Details : {applicationID}</h1>
-                        <hr />
+            <hr />
             <Link className="bg-blue-500 text-white p-2 m-2 rounded-md hover:bg-blue-600" href={`/dashboard/applications/${applicationID}/review`}>Application Review</Link>
         </div>
     );
