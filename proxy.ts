@@ -12,13 +12,20 @@ export function proxy(request:NextRequest){
     // const isAdminHost = host.includes("admin.new-job.mostafax494.workers.dev")
 
     const isAdminHost = host === "admin.localhost:3001";
-    if(isAdminHost && !pathName.includes("/dashboard")){
+    if(isAdminHost && 
+        !pathName.includes("/dashboard")
+        // !pathName.includes("/users") &&
+        // !pathName.includes("/jobs") &&
+        // !pathName.includes("/companies") &&
+        // !pathName.includes("/settings")
+    ){
         console.log("admin : Redirect to dashboard")
         return NextResponse.redirect(new URL('/dashboard', request.url))
     }
     // const isMainDomin = host.includes("new-job.mostafax494.workers.dev") 
+
     const isMainDomin = host === "localhost:3001"; 
-    if(isMainDomin && pathName.includes("dashboard")){
+    if(isMainDomin && pathName.includes("/dashboard")){
         return NextResponse.redirect(new URL('/',request.url))
     }
     return NextResponse.next()
